@@ -1,4 +1,5 @@
 # cheatsheets
 These are cheatsheets I've collected on various topics.
 
-[Javascript](js_cheatsheet.md)
+[Javascript cheatsheet](js_cheatsheet.md)
+[Python + ML cheatsheet](python_cheatsheet.md)
