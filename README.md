@@ -1,2 +1,4 @@
 # cheatsheets
-I forget things, so I write down things
+These are cheatsheets I've collected on various topics.
+
+[Javascript](js_cheatsheet.md)
