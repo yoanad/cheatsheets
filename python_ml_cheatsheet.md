@@ -42,6 +42,10 @@
                 max_speed  shield
     viper               4       5
     sidewinder          7       
+    
+    >>> unique_index = pd.Index(list('abc'))
+    >>> unique_index.get_loc('b')
+1
 # ML stuff
 https://www.youtube.com/user/mathematicalmonk
 
