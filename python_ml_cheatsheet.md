@@ -136,4 +136,6 @@ Of course, both the methods I gave only apply to single row column at a time and
 Convert categorical variable into dummy/indicator variables 
 
     pd.get_dummies(s)
+# Logistic regression
+* https://www.datacamp.com/community/tutorials/understanding-logistic-regression-python
 
