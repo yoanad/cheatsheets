@@ -1,51 +1,80 @@
 # Python cheatsheet
 
-# General useful functions
-
+## General useful functions
 
 - Get only categorical, numerical 
-    df.describe(include=['category']) # categorical 
+    ```df.describe(include=['category']) # categorical 
     df.describe(include=[np.object]) # string
-    df.describe(include=[np.number]) # numeric
-
+    df.describe(include=[np.number]) # numeric```
 
 - Logical indexing (in-place modif)
-    credit = credit[credit['Age'] > 0]
-
+    ```credit = credit[credit['Age'] > 0]```
 
 - Enumerate
-    animals = ["cat", "bird", "dog"]
+    ```animals = ["cat", "bird", "dog"]```
 
 ## Use enumerate to get indexes and elements from an iterable
 *... This unpacks a tuple.*
 
-    for i, element in enumerate(animals):
-        print(i, element)
+    ```for i, element in enumerate(animals):
+        print(i, element)```
 
 * Does not unpack the tuple.*
 
-    for x in enumerate(animals):
-        print(x, "UNPACKED =", x[0], x[1])
+    ```for x in enumerate(animals):
+        print(x, "UNPACKED =", x[0], x[1])```
 
 **Output**
 
-    0 cat
+    ```0 cat
     1 bird
     2 dog
     (0, 'cat') UNPACKED = 0 cat
     (1, 'bird') UNPACKED = 1 bird
-    (2, 'dog') UNPACKED = 2 dog
+    (2, 'dog') UNPACKED = 2 dog```
 
 
 - loc
-    df.loc[['viper', 'sidewinder']]
+    ```df.loc[['viper', 'sidewinder']]
                 max_speed  shield
     viper               4       5
     sidewinder          7       
     
     >>> unique_index = pd.Index(list('abc'))
     >>> unique_index.get_loc('b')
-1
+    ```
+
+## Pandas
+## read 
+    data_path = os.path.join(os.getcwd(), 'datasets', 'spambase.csv')
+    spambase = pd.read_csv(data_path, delimiter = ',')
+- extract input features
+    x = spambase_binary
+- test outcome
+
+`y = pd.Series(`y_test`["is_spam"])`
+
+- feed the Multionomial NB classifier
+    mnb = MultinomialNB()
+    mnb.fit(x,y);
+    mnb.predict(X_test)
+    
+## Others
+- Create `Pandas DataFrame` 
+
+`df = pd.DataFrame(data=spambase)`
+
+- Pandas Series
+
+One-dimensional ndarray with axis labels (including time series).
+
+    s = pd.Series(data, index=index)
+## working with data
+
+Convert categorical variable into dummy/indicator variables 
+
+    pd.get_dummies(s)
+    
 # ML stuff
 https://www.youtube.com/user/mathematicalmonk
 
@@ -81,33 +110,18 @@ If a relationship between two variables is not linear, the rate of increase or d
 
 
 In a monotonic relationship, the variables tend to move in the same relative direction, but not necessarily at a constant rate. In a linear relationship, the variables move in the same direction at a constant rate. Plot 5 shows both variables increasing concurrently, but not at the same rate. This relationship is monotonic, but not linear. 
+## Logistic regression
+### coefficient:
+`coef_`
 
-## Others
-- Create `Pandas DataFrame` 
+The weight/coefficient matrix of a generalised linear model predictor, of shape (n_features,) for binary classification and single-output regression, (n_classes, n_features) for multiclass classification and (n_targets, n_features) for multi-output regression. Note this does not include the intercept (or bias) term, which is stored in intercept_.
 
-`df = pd.DataFrame(data=spambase)`
+A regression coefficient describes the size and direction of the relationship between a predictor and the response variable. Coefficients are the numbers by which the values of the term are multiplied in a regression equation.
 
-- Pandas Series
+Each of these correspond formally to a test of the null hypothesis that the coefficient in question is zero, while all the others are not (also known as the Wald test).
 
-One-dimensional ndarray with axis labels (including time series).
+*null hypothesis*:  null hypothesis that the coefficient is equal to zero (no effect)
 
-    s = pd.Series(data, index=index)
-
-
-## Pandas
-## read 
-    data_path = os.path.join(os.getcwd(), 'datasets', 'spambase.csv')
-    spambase = pd.read_csv(data_path, delimiter = ',')
-- extract input features
-    x = spambase_binary
-- test outcome
-
-`y = pd.Series(`y_test`["is_spam"])`
-
-- feed the Multionomial NB classifier
-    mnb = MultinomialNB()
-    mnb.fit(x,y);
-    mnb.predict(X_test)
 ## Confusion matrix
 
 I'm assuming that `M[i,j]` stands for `Element of real class i was classified as j`. If its the other way around you are going to need to transpose everything I say. I'm also going to use the following matrix for concrete examples:
@@ -134,22 +148,6 @@ The second thing you can do is to look at each result from your classifier and a
 --
 Of course, both the methods I gave only apply to single row column at a time and I'm not sure if it would be a good idea to actually modify your confusion matrix in this form. However, this should give the percentages you are looking for.
 
-
-## working with data
-
-Convert categorical variable into dummy/indicator variables 
-
-    pd.get_dummies(s)
-## Logistic regression
+## Resources
 * https://www.datacamp.com/community/tutorials/understanding-logistic-regression-python
-### coefficient:
-`coef_`
-
-The weight/coefficient matrix of a generalised linear model predictor, of shape (n_features,) for binary classification and single-output regression, (n_classes, n_features) for multiclass classification and (n_targets, n_features) for multi-output regression. Note this does not include the intercept (or bias) term, which is stored in intercept_.
-
-A regression coefficient describes the size and direction of the relationship between a predictor and the response variable. Coefficients are the numbers by which the values of the term are multiplied in a regression equation.
-
-Each of these correspond formally to a test of the null hypothesis that the coefficient in question is zero, while all the others are not (also known as the Wald test).
-
-*null hypothesis*:  null hypothesis that the coefficient is equal to zero (no effect
-
+* Interpretation: https://blog.minitab.com/blog/adventures-in-statistics-2/how-to-interpret-regression-analysis-results-p-values-and-coefficients 
