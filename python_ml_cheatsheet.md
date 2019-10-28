@@ -152,4 +152,5 @@ Of course, both the methods I gave only apply to single row column at a time and
 
 ## Resources
 * https://www.datacamp.com/community/tutorials/understanding-logistic-regression-python
-* Interpretation: https://blog.minitab.com/blog/adventures-in-statistics-2/how-to-interpret-regression-analysis-results-p-values-and-coefficients 
+* Interpretation: https://blog.minitab.com/blog/adventures-in-statistics-2/how-to-interpret-regression-analysis-results-p-values-and-coefficients
+* https://ml-cheatsheet.readthedocs.io/en/latest/logistic_regression.html
