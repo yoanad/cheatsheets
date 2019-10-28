@@ -3,77 +3,81 @@
 ## General useful functions
 
 - Get only categorical, numerical 
-    ```df.describe(include=['category']) # categorical 
-    df.describe(include=[np.object]) # string
-    df.describe(include=[np.number]) # numeric```
+```df.describe(include=['category']) # categorical 
+df.describe(include=[np.object]) # string
+df.describe(include=[np.number]) # numeric
+```
 
 - Logical indexing (in-place modif)
-    ```credit = credit[credit['Age'] > 0]```
+```credit = credit[credit['Age'] > 0]
+```
 
 - Enumerate
-    ```animals = ["cat", "bird", "dog"]```
+```animals = ["cat", "bird", "dog"]
+```
 
 ## Use enumerate to get indexes and elements from an iterable
 *... This unpacks a tuple.*
 
-    ```for i, element in enumerate(animals):
-        print(i, element)```
+```for i, element in enumerate(animals):
+    print(i, element)
+```
 
 * Does not unpack the tuple.*
 
-    ```for x in enumerate(animals):
-        print(x, "UNPACKED =", x[0], x[1])```
+```for x in enumerate(animals):
+    print(x, "UNPACKED =", x[0], x[1]]
+```
 
 **Output**
 
-    ```0 cat
-    1 bird
-    2 dog
-    (0, 'cat') UNPACKED = 0 cat
-    (1, 'bird') UNPACKED = 1 bird
-    (2, 'dog') UNPACKED = 2 dog```
-
+```0 cat
+1 bird
+2 dog
+(0, 'cat') UNPACKED = 0 cat
+(1, 'bird') UNPACKED = 1 bird
+(2, 'dog') UNPACKED = 2 dog
+```
 
 - loc
-    ```df.loc[['viper', 'sidewinder']]
-                max_speed  shield
-    viper               4       5
-    sidewinder          7       
-    
-    >>> unique_index = pd.Index(list('abc'))
-    >>> unique_index.get_loc('b')
-    ```
+```df.loc[['viper', 'sidewinder']]
+            max_speed  shield
+viper               4       5
+sidewinder          7       
+
+>>> unique_index = pd.Index(list('abc'))
+>>> unique_index.get_loc('b')
+```
 
 ## Pandas
 ## read 
-    data_path = os.path.join(os.getcwd(), 'datasets', 'spambase.csv')
-    spambase = pd.read_csv(data_path, delimiter = ',')
+```data_path = os.path.join(os.getcwd(), 'datasets', 'spambase.csv')
+spambase = pd.read_csv(data_path, delimiter = ',')
+```
 - extract input features
-    x = spambase_binary
+`x = spambase_binary`
 - test outcome
-
 `y = pd.Series(`y_test`["is_spam"])`
 
 - feed the Multionomial NB classifier
-    mnb = MultinomialNB()
-    mnb.fit(x,y);
-    mnb.predict(X_test)
+```mnb = MultinomialNB()
+mnb.fit(x,y);
+mnb.predict(X_test)
+```
     
 ## Others
-- Create `Pandas DataFrame` 
+### Pandas DataFrame
 
 `df = pd.DataFrame(data=spambase)`
 
-- Pandas Series
+### Pandas Series
 
-One-dimensional ndarray with axis labels (including time series).
-
-    s = pd.Series(data, index=index)
+* One-dimensional ndarray with axis labels (including time series).
+`s = pd.Series(data, index=index)`
 ## working with data
 
 Convert categorical variable into dummy/indicator variables 
-
-    pd.get_dummies(s)
+`pd.get_dummies(s)`
     
 # ML stuff
 https://www.youtube.com/user/mathematicalmonk
