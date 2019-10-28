@@ -140,9 +140,9 @@ Of course, both the methods I gave only apply to single row column at a time and
 Convert categorical variable into dummy/indicator variables 
 
     pd.get_dummies(s)
-# Logistic regression
+## Logistic regression
 * https://www.datacamp.com/community/tutorials/understanding-logistic-regression-python
-* coefficient:
+### coefficient:
 `coef_`
 
 The weight/coefficient matrix of a generalised linear model predictor, of shape (n_features,) for binary classification and single-output regression, (n_classes, n_features) for multiclass classification and (n_targets, n_features) for multi-output regression. Note this does not include the intercept (or bias) term, which is stored in intercept_.
