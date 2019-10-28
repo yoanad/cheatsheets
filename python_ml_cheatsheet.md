@@ -9,12 +9,10 @@ df.describe(include=[np.number]) # numeric
 ```
 
 - Logical indexing (in-place modif)
-```credit = credit[credit['Age'] > 0]
-```
+`credit = credit[credit['Age'] > 0]`
 
 - Enumerate
-```animals = ["cat", "bird", "dog"]
-```
+`animals = ["cat", "bird", "dog"]`
 
 ## Use enumerate to get indexes and elements from an iterable
 *... This unpacks a tuple.*
