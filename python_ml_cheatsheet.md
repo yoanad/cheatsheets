@@ -113,6 +113,7 @@ If a relationship between two variables is not linear, the rate of increase or d
 
 In a monotonic relationship, the variables tend to move in the same relative direction, but not necessarily at a constant rate. In a linear relationship, the variables move in the same direction at a constant rate. Plot 5 shows both variables increasing concurrently, but not at the same rate. This relationship is monotonic, but not linear. 
 ## Logistic regression
+### Good function explanation: https://www.coursera.org/lecture/machine-learning/decision-boundary-WuL1H
 ### coefficient:
 `coef_`
 
