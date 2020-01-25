@@ -1,19 +1,19 @@
 # Multiple SSH keys on Mac
 
 ## Generate ssh keys
-$ ssh-keygen -t rsa -C "your_email@youremail.com"
+`$ ssh-keygen -t rsa -C "your_email@youremail.com"`
 
 ## Save keys in
-~/.ssh/id_rsa
-~/.ssh/id_rsa_exp
+``~/.ssh/id_rsa
+~/.ssh/id_rsa_exp``
 
 ## Add these two keys as following
 
-$ ssh-add ~/.ssh/id_rsa
-$ ssh-add ~/.ssh/id_rsa_exp
+``$ ssh-add ~/.ssh/id_rsa
+$ ssh-add ~/.ssh/id_rsa_exp``
 
 ## Delete all cached keys before
-$ ssh-add -D
+``$ ssh-add -D``
 
 
 ## Check your saved keys
