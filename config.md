@@ -25,7 +25,7 @@ nano config``
 
 ## Then add
 
-#private account
+```#private account
 Host github.com
 	HostName github.com
 	User git
@@ -36,7 +36,8 @@ Host exp
 	HostName exp.gitlab.com
 	User git
 	IdentityFile ~/.ssh/id_rsa_exp
-  
+```
+
 ## Clone you repo and modify your Git config clone your repo
 ``git clone git@exp.gitlab.com:exp/folder.git``
 
