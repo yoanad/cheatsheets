@@ -9,7 +9,7 @@
 x = len(cars)
 ```
 - append to array
-``cars.append("Honda")``
+```cars.append("Honda")```
 - add to position
 ``cars.insert()``
 - remove item 
