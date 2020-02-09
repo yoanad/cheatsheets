@@ -11,27 +11,27 @@ x = len(cars)
 - append to array
 ```cars.append("Honda")```
 - add to position
-``cars.insert()``
+```cars.insert()```
 - remove item 
-``cars.pop(1)``
+```cars.pop(1)```
 - get item
-``thislist[1]``
+```thislist[1]```
 - get last item
-``thislist[-1]``
+```thislist[-1]```
 - range of indexes
-``thislist[2:5]``
+```thislist[2:5]```
 The search will start at index 2 (included) and end at index 5 (not included).
-``thislist[2:]``
+```thislist[2:]```
 From 2 ot end
 - range of negative indexes
-``thislist[-4:-1]``
+```thislist[-4:-1]```
 from index -4 (included) to index -1 (excluded)
 - check if item exists
-``if "apple" in thislist:``
+```if "apple" in thislist:```
 - join two lists
-``list3 = list1 + list2``
+```list3 = list1 + list2```
 - remove last item
-``list.pop()``
+```list.pop()```
 
 ## For loops
 ```
@@ -57,17 +57,17 @@ for x in thisset:
   print(x)
 ```
 - add to set
-``thisset.add("orange")``
+```thisset.add("orange")```
 - add multiple items 
-``thisset.update(["orange", "mango", "grapes"])``
+```thisset.update(["orange", "mango", "grapes"])```
 - length
-``len(thisset)``
+```len(thisset)```
 - remove
-``thisset.remove("banana")``
+```thisset.remove("banana")```
 - check if in set
-``print("banana" in thisset)``
+```print("banana" in thisset)```
 - remove last item
-``thisset.pop()``
+```thisset.pop()```
 
 ## Dictionary 
 ```thisdict = {
@@ -77,11 +77,11 @@ for x in thisset:
 }
 ```
 - access items
-``x = thisdict["model"]``
+```x = thisdict["model"]```
 or
-``x = thisdict.get("model")``
+```x = thisdict.get("model")```
 - change val
-``thisdict["year"] = 2018``
+```thisdict["year"] = 2018```
 - loop
 Print all key names
 ```for x in thisdict:
@@ -104,12 +104,12 @@ Print all key names
   print("Yes, 'model' is one of the keys in the thisdict dictionary")
 ```
 - adding items
-``thisdict["color"] = "red"``
+```thisdict["color"] = "red"```
 - remove item
-``thisdict.pop("model")``
+```thisdict.pop("model")```
 - remove last inserted item
-``thisdict.popitem()``
+```thisdict.popitem()```
 - empty dict
-``thisdict.clear()``
+```thisdict.clear()```
 - copy a dict
-``mydict = thisdict.copy()``
+```mydict = thisdict.copy()```
