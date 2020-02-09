@@ -20,11 +20,15 @@ x = len(cars)
 ``thislist[-1]``
 - range of indexes
 ``thislist[2:5]``
+
 The search will start at index 2 (included) and end at index 5 (not included).
+
 ``thislist[2:]``
+
 From 2 ot end
 - range of negative indexes
 ``thislist[-4:-1]``
+
 from index -4 (included) to index -1 (excluded)
 - check if item exists
 ``if "apple" in thislist:``
