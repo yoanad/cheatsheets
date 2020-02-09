@@ -15,7 +15,8 @@ x = len(cars)
 ```cars.insert()
 ```
 - remove item 
-```cars.pop(1)```
+```cars.pop(1)
+```
 - get item
 ```thislist[1]```
 - get last item
