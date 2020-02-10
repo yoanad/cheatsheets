@@ -72,6 +72,8 @@ for x in thisset:
 ``print("banana" in thisset)``
 - remove last item
 ``thisset.pop()``
+- set from array
+``s = set(lst)``
 
 ## Dictionary 
 ```thisdict = {
