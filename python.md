@@ -56,7 +56,8 @@ for num, name in enumerate(presidents, start=1):
 
 ## Sets
 ```thisset = {"apple", "banana", "cherry"}
-
+## or
+thisSet = set()
 for x in thisset:
   print(x)
 ```
