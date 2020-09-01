@@ -1,6 +1,8 @@
 # React Cheatsheet
 
 ## Hooks
+
+### `useEffect`
 * *componentDidMount*
 - run once when component is mounted
 ```js
