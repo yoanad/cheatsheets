@@ -5,3 +5,4 @@ These are cheatsheets I've collected on various topics.
 * [Python 101](python.md)
 * [Python + ML cheatsheet](python_ml_cheatsheet.md)
 * [Config stuff](config.md)
+* [React](React.md)
