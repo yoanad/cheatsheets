@@ -42,3 +42,49 @@ useEffect(() => {
 }, [])
 ```
 credit: https://stackoverflow.com/questions/53464595/how-to-use-componentwillmount-in-react-hooks 
+
+
+### `useCallback`
+* the hook returns the same function instance between renderings
+```js
+function MyComponent() {
+  // handleClick is the same function object
+  const handleClick = useCallback(() => {
+    console.log('Clicked!');
+  }, []);
+
+  // ...
+}
+```
+#### Use case
+E.g. when we have a component which is wrapped with React.memo() (e.g. a list of items that we don't want to re-render all the time, because it's expensive)
+```js
+import React from 'react';
+import useSearch from './fetch-items';
+
+function MyBigList({ term, handleClick }) {
+  const items = useSearch(term);
+
+  const itemToElement = item => <div onClick={handleClick}>{item}</div>;
+
+  return <div>{items.map(itemToElement)}</div>;
+}
+
+export default React.memo(MyBigList);
+```
+
+```js
+export default function MyParent({ term }) {
+  const handleClick = useCallback(item => {
+    console.log('You clicked ', item);
+  }, [term]);
+
+  return (
+    <MyBigList
+      term={term}
+      handleClick={handleClick}
+    />
+  );
+}
+```
+* handleClick callback is memoizied by useCallback(). As long as term variable stays the same, useCallback() returns the same function instance.
