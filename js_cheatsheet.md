@@ -476,3 +476,14 @@ CSS priority is determined by [specificity and inheritance](https://www.smashing
 | values are cached                                                                                 | values are not cached         |                                                                                    |
 
 
+# Code style
+## Safe mapping
+```js
+arr 
+&& arr.length
+&& arr.map((el) =>(
+    <Option> {el} </Option>
+))
+}
+```
+
