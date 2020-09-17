@@ -6,3 +6,4 @@ These are cheatsheets I've collected on various topics.
 * [Python + ML cheatsheet](python_ml_cheatsheet.md)
 * [Config stuff](config.md)
 * [React](React.md)
+* [Testing](testing.md)
