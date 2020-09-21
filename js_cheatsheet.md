@@ -1,7 +1,7 @@
 # JS cheatsheet
 
 # ES6 vs ES5
-## Arrow
+## Arrow functions
     // ES5
     var multiplyES5 = function(x, y) {
       return x * y;
@@ -22,7 +22,7 @@
     };
     //ES6
     var docLogEs6 = () => { console.log(document); };
-# OOP
+# OOP principles 
 - Easy to add features and functionality
 - Performant
 - Clear Structure
@@ -475,6 +475,10 @@ CSS priority is determined by [specificity and inheritance](https://www.smashing
 | calculate a value on the fly (behaves as it is a `data` value; it’s *computed* when it’s accessed | you want to execute something | keeps track of any data that changed (you can observe data, props, maybe computed) |
 | values are cached                                                                                 | values are not cached         |                                                                                    |
 
+# map, reduce, filer
+## map
+* takes 2 arguments, a callback and an optional context (will be considered as this in the callback) which I did not use in the previous example. The callback runs for each value in the array and returns each new value in the resulting array.
+`const officersIds = officers.map(officer => officer.id);`
 
 # Code style
 ## Safe mapping
