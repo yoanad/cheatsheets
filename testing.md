@@ -1,4 +1,4 @@
-# Testing
+# React Testing
 ## Enzyme basic example
 
 ```js
