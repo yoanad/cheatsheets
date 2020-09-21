@@ -22,11 +22,6 @@
     };
     //ES6
     var docLogEs6 = () => { console.log(document); };
-# OOP principles 
-- Easy to add features and functionality
-- Performant
-- Clear Structure
-- Encapsulation 
 ## Objects
 - notation
 1. *Dot Notation:* Call `objectName.propertyName`.
@@ -323,7 +318,7 @@ At position 2, remove 2 items:
     
     console.log(array1.fill(6));
     // expected output: [6, 6, 6, 6]
-# Prototype
+## Prototype
 
 **Function.prototype.apply()**
 
@@ -463,18 +458,6 @@ CSS priority is determined by [specificity and inheritance](https://www.smashing
 - Specificity: ID > class, psuedo-class > element, psudo-element
 - Inheritence: specified value → computed value → used value → actual value
 
-
-# Vue
-| Props                                                       | Data                                                                             |
-| ----------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| data that the ancestor can pass down to the child component | Data is the memory of each component. This is where you would store *your* data; |
-|                                                             | data() →  computations only in init() <br>data: {} → object map                  |
-
-| Computed                                                                                          | Methods                       | Watch                                                                              |
-| ------------------------------------------------------------------------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------- |
-| calculate a value on the fly (behaves as it is a `data` value; it’s *computed* when it’s accessed | you want to execute something | keeps track of any data that changed (you can observe data, props, maybe computed) |
-| values are cached                                                                                 | values are not cached         |                                                                                    |
-
 # map, reduce, filer
 ## map
 * takes 2 arguments, a callback and an optional context (will be considered as this in the callback) which I did not use in the previous example. The callback runs for each value in the array and returns each new value in the resulting array.
@@ -490,4 +473,19 @@ arr
 ))
 }
 ```
+
+
+
+# Vue
+| Props                                                       | Data                                                                             |
+| ----------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| data that the ancestor can pass down to the child component | Data is the memory of each component. This is where you would store *your* data; |
+|                                                             | data() →  computations only in init() <br>data: {} → object map                  |
+
+| Computed                                                                                          | Methods                       | Watch                                                                              |
+| ------------------------------------------------------------------------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------- |
+| calculate a value on the fly (behaves as it is a `data` value; it’s *computed* when it’s accessed | you want to execute something | keeps track of any data that changed (you can observe data, props, maybe computed) |
+| values are cached                                                                                 | values are not cached         |                                                                                    |
+
+
 
