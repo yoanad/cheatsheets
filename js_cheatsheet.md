@@ -1,6 +1,5 @@
 # JS cheatsheet
 
-# ES6 vs ES5
 ## Arrow functions
     // ES5
     var multiplyES5 = function(x, y) {
@@ -25,17 +24,18 @@
 ## Objects
 - notation
 1. *Dot Notation:* Call `objectName.propertyName`.
-2. *Bracket Notation:* Call `objectName['propertyName']`. 
--  **Initializer Notation**
+2. *Bracket Notation:* Call `objectName['propertyName']`.
+
+**Initializer Notation**
+```js
     var a = 3;
     var b = 'Rome';
     var c = false;
     var o = {a, b, c};
-    
     var p = {
-        a: 3, 
-        b: 'Rome', 
-        c: false
+      a: 3, 
+      b: 'Rome', 
+      c: false
     };
     
     var q = {};
@@ -43,38 +43,45 @@
     q.a = a;
     q.b = b;
     q.c = c;
-    - `**new Object()**`
-      var o = new Object();
-      o.a = 4;
-      o.b = 'Rome';
-      o.c = true;
-    - `**Object.create()**` → creating an empty object
-    - Object.create(*proto*, [*propertiesObject*])
-        - proto- > prototype of the newly created object
-        - _ _ **proto_ _**  → JS knows to look at the proto if the obj property we sre looking for is not on the object
+```
+**new Object()**
+```js
+    var o = new Object();
+    o.a = 4;
+    o.b = 'Rome';
+    o.c = true;
+```
+****Object.create()**` → creating an empty object**
+
+    Object.create(proto, [propertiesObject])
+- proto- > prototype of the newly created object
+- _ _ **proto_ _** → JS knows to look at the proto if the obj property we sre looking for is not on the object
+```js
     var x = {
-        a: 5, 
-        foo: function() {
-            return this.a * this.a;
-        }
+      a: 5, 
+      foo: function() {
+        return this.a * this.a;
+      }
     };
     var o = Object.create(x);
-    
-    
-- Constructor
+```
+**Constructor**
+
     function Actor(firstName, lastName, Age) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.Age = Age;
-    }
-    
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.Age = Age;
+      }
     var a1 = new Actor('Julia', 'Roberts', 48);
     var a2 = new Actor('Kate', 'Winslet', 40);
 
-→ create() vs new()
+
+**create() vs new()**
 **Create**
 
-    - with create you initialize a new empty object and you can sepcify some functionality in the proto property. You can then fill the object and assign it properties manually
+- with create you initialize a new empty object and you can sepcify some functionality in the proto property. You can then fill the object and assign it properties manually 
+```js
+
     function userCreator (name, score) { 
       let newUser = Object.create(userFunctionStore);
       newUser.name = name;
@@ -88,39 +95,49 @@
     let user1 = userCreator("Will", 3);
     let user2 = userCreator("Tim", 5);
     user1.increment()
-    
-
+```
 **New**
 
-    - with new you create an object and you can directly assign values to the properties. it returns it’s own object as this 
-    - When we call the constructor function with new in front we automate 2 things 1. Create a new user object 2. return the new user object
+- with **new** you create an object and you can directly assign values to the properties. it returns it’s own object as this
+- When we call the constructor function with new in front we automate 2 things: 
+    1. Create a new user object
+    2. return the new user object
+
+```js
     function User(name, score){
       this.name = name; this.score = score;
     } 
       User.prototype.increment = function(){ this.score++; };
       User.prototype.login = function(){ console.log("login"); };
-      
+    
       let user1 = new User(“Eva”, 9);
       user1.increment();
+```
 ## Class syntactic sugar
 - same as above
 - Emerging as a new standard
 - Feels more like style of other languages (e.g. Python)
+```js
     class User { 
       constructor (name, score){
-      this.name = name;
-      this.score = score;
+        this.name = name;
+        this.score = score;
       }
+    
       increment (){
         this.score++;
       }
-      login (){
+    
+      login () {
         console.log("login");
       }
     }
+    
     let user1 = new User("Eva", 9);
     user1.increment();
+```
 ## Constructor
+```js
     class Polygon {
         constructor(height, width) {
             this.height = height;
@@ -130,42 +147,40 @@
             return this.height * this.width;
         }
     }
-
-
+    
+    
       var testObj = {
         foo: "tball"
       };
-     
+    
       // prints: 'We got ourselves a foo!'
       if (testObj.hasOwnProperty('foo')) {
         console.log('We got ourselves a foo!');
       } else {
         console.log('No foo for you!');
       }
+```
 ## Work with objects
 
 **get key**
 
     var keys = Object.keys(example);
     Object.values(example)[0].
-    
 ## get key and value
     var key = Object.keys(person)[0];
     var value = person[key];
+## Class
 
+**Prototype**
 
-# Class
-## Prototype
 - objects inherit from other objects
 - When I call a method on an object, i look in the object to find the method, if it’s not there, I look up the next object in the prototypal chain and we can use the functionality there
-
-
     Rectangle.prototype.area = function () {
-        return this.w * this.h;
+      return this.w * this.h;
     }
 
-
-## Inheritance 
+**Inheritance**
+```js
     class Rectangle {
         constructor(w, h) {
             this.w = w;
@@ -186,11 +201,12 @@
             super(h, h);
         }
     }
+```
 ## Iterate over object
-- `for … in`
 
+**for … in`**
 The *for...in* statement iterates over the enumerable properties of an object in an arbitrary order
-
+```js
     const o = {
         a: 1,
         b: 2,
@@ -210,12 +226,10 @@ The *for...in* statement iterates over the enumerable properties of an object in
     for (let p in o) {
         console.log(p + ' ' + o[p]);
     }
-
-
-- `***forEach***`
-
+```
+**forEach**
 The *forEach* method iterates through an array and, for each element, it executes a function once.
-
+```js
     const arr = ['a', 'b', 'c', 'd'];
     
     arr.forEach((value, index, array) => {
@@ -234,9 +248,8 @@ The *forEach* method iterates through an array and, for each element, it execute
     this.sides.forEach(function (s) {
         sum += s;
     });
-
-
-# JS map
+```    
+## JS map
     var myMap = new Map();
     var keyString = "a string",
         keyObj = {},
@@ -261,9 +274,7 @@ The *forEach* method iterates through an array and, for each element, it execute
      for (var [key, value] of myMap) {
       console.log(key + ' = ' + value);
     }
-
-
-# JS Set
+## JS Set
 
 The `**Set**` object lets you store unique values of any type, whether [primitive values](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) or object references.
 
@@ -285,14 +296,15 @@ The `**Set**` object lets you store unique values of any type, whether [primitiv
     [...names] // the set is now an array
     [...names].map(name => {firstname: name});
     new Set([...names].map(name => {firstname: name})); // -> convert back to set
-    
-# String manipulation
-## Split
+## String manipulation
+
+**Split**
+
     let arr = [...str];
     let arr = str.split(/(?!$)/u;
     let arr = Array.from(str);
-## Splice
 
+**Splice**
 At position 2, add the new items, and remove 1 item:
 
     var fruits = ["Banana", "Orange", "Apple", "Mango"];
@@ -301,8 +313,8 @@ At position 2, add the new items, and remove 1 item:
 At position 2, remove 2 items:
 
     fruits.splice(2, 2);
-## Replace
 
+**Replace**
 `*string*``.replace(``*searchvalue, newvalue*``)`
 
 ## Matrix range
@@ -322,7 +334,6 @@ At position 2, remove 2 items:
 
 **Function.prototype.apply()**
 
-
      Math.max.apply( null, arr );
 ## Spreading iterables
 
@@ -331,12 +342,11 @@ The spread operator (`...`) turns an iterable into the arguments of a function o
     > let arr = [2, 11, -1];
     > Math.max(...arr)
     11
-# Closure
+## Closure
 
 A *closure* is the combination of a function and the lexical environment within which that function was declared. 
-Memoizing
-
-
+**Memoizing**
+```js
     function outer() {
       let counter = 0;
       function incrementCounter() {
@@ -349,52 +359,63 @@ Memoizing
     myNewFunction(); //actually equals to outer()'s return which is incrementCounter()
     //incrementCounter() is not just a function. function PLUS a reference to the surrounding data. so counter = 0 is available; Like a backpack!
     // IT SAVES THE DATA IN THE BACKPACK.
-
-
+```    
 ## Lexical scope → the backpack
 
 the position of the function definition is what determines what data will be available when the function gets invoked.
 
-## [[scope]] 
+## [[scope]]
 
 -> where the live storage of data is stored
 
     //When a fct is defined, it gets a [[scope]] property that references the Local Memory/Variable Environment in which it has been defined.
+## Functions
 
+**Higher order function**
 
-# Functions
-## Higher order function
 - a function that can take or return another function
-## Callback function
+
+**Callback function**
+
 - a function that can be passed in a higher order function
 ## Map, reduce, filter
-- The `**map()**` method creates a new array with the results of calling a provided function on every element in the calling array.
 
-map is used when you have an array of *stuff* ( scientific term ) and you want to*do something* ( another scientific term ) for every item in that array.
+**map()**
 
+- The `**map()* method creates a new array with the results of calling a provided function on every element in the calling array.
+- map is used when you have an array of *stuff* ( scientific term ) and you want to *do something* ( another scientific term ) for every item in that array.
+```js
     const numbers = [2, 4, 8, 10];
     const halves = numbers.map(x => x / 2);
     // halves is [1, 2, 4, 5]
+```
+**filter**
+
 - The `**filter()**` method creates a new array with all elements that pass the test implemented by the provided function.
+```js
     const words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
-    
     const longWords = words.filter(word => word.length > 6);
-    // longWords is ["exuberant", "destruction", "present"]
+    //longWords is ["exuberant", "destruction", "present"]
+```
+**reduce**
+
 - The `**reduce()**` method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
-    const total = [0, 1, 2, 3].reduce((sum, value) => sum + value, 1);
+```js
+const total = [0, 1, 2, 3].reduce((sum, value) => sum + value, 1);
     // total is 7
-
-
-# Asynchronous JS
+```
+## Asynchronous JS
 
 Allows us to defer our actions until the work (e.g. API request) is completed and continue running our code line by line in the meantime.
 
 - nonblocking
 - made possible through browser APIs
-## Promise
 
-This is what the standard class `Promise` is for. A *promise* is an asynchronous action that may complete at some point and produce a value. It is able to notify anyone who is interested when its value is available.
+**Promise**
+This is what the standard class `Promise` is for.
 
+-  A *promise* is an asynchronous action that may complete at some point and produce a value. It is able to notify anyone who is interested when its value is available.
+```js
     let fifteen = Promise.resolve(15);
     fifteen
       .then(function (value) { console.log(`Got ${value}`)});
@@ -403,7 +424,57 @@ This is what the standard class `Promise` is for. A *promise* is an asynchronous
         return "nothing";
       })
     // → Got 15
+```
 
+**async/await**
+
+- “**async**” before a function means one simple thing: a function always returns a promise. Other values are wrapped in a resolved promise automatically.
+```js
+    async function f() {
+      return 1;
+    }
+    f().then(alert); // 1
+    
+    //equivalent to
+    
+    async function f() {
+      return Promise.resolve(1);
+    }
+    f().then(alert); // 1
+```
+- The keyword `**await**` makes JavaScript wait until that promise settles and returns its result.
+-  suspends the function execution until the promise settles, and then resumes it with the promise result. 
+```js
+    async function f() {
+    
+      let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("done!"), 1000)
+      });
+    
+      let result = await promise; // wait until the promise resolves (*)
+    
+      alert(result); // "done!"
+    }
+    
+    f();
+    //The function execution “pauses” at the line (*) and resumes when the promise settles, with result becoming its result.
+```
+
+https://javascript.info/async-await
+
+
+**event loop**
+The job of the Event loop is to look into the call stack and determine if the call stack is empty or not. If the call stack is empty, it looks into the message queue to see if there’s any pending callback waiting to be executed.
+
+**Message queue**
+
+- contains callbacks from event listeners or timeouts, e.g. the callbacks from the DOM events such as click events and keyboard events
+
+**ES6 Job Queue/ Micro-Task queue**
+
+-  job queue has a higher priority than the message queue
+
+which means that promise jobs inside the job queue/ micro-task queue will be executed before the callbacks inside the message queue.
 
 # ES6 maps vs objects
 | What            | Map                                                                                                                                                   | Object                                                                                                                                                                                                                   |
@@ -425,20 +496,17 @@ This is what the standard class `Promise` is for. A *promise* is an asynchronous
     myMap.set(keyString, "value associated with 'a string'");
     myMap.set(keyObj, 'value associated with keyObj');
     myMap.set(keyFunc, 'value associated with keyFunc');
-    
-
-
 # ES6 sets vs arrays
-| What               | Set                                                                                                                                                                                       | Array                                                                                                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                    | Abstract data type with only disinct elements, without the need of being allocated by index<br><br>- keyed collection                                                                     | A Structure representing block of data allocated in consecutive memory<br><br>- indexed collection                                                            |
-| Acessing elements  |                                                                                                                                                                                           | Faster, because stored in consecutive memory                                                                                                                  |
-| Check if el exists | ***Set.prototype.has(value)***<br>set.has(0) → O(1)                                                                                                                                       | ***Array.prototype.indexOf(value)***<br>arr.indexOf(1) !== -1; → O(n)                                                                                         |
-| Add/insert         | set.add() → O(1) because hashtable approach                                                                                                                                               | **O(1)** → end with ``arr.push(el)`<br> **O(n)**  → beggining with `arr.unshift(3)`                                                                           |
-| Remove             | set.delete(4)<br>set.clear()                                                                                                                                                              | arr.pop() → O(1)<br>arr.shift() → //removes first el → O(n)                                                                                                   |
-| Support            | less built in operations, but delete                                                                                                                                                      | no delete, but reduce, reverse, sort…                                                                                                                         |
-| When to use        | -  *avoid saving duplicate data to our structure*<br>-  **union(), intersect(), difference()**, etc… are easily implemented effectively based on the native built-in operations provided. | -  *keep elements ordered for quick access*<br>- *heavy modification* (removing and adding elements) or *any action required direct index access to elements* |
-| Iteration          |                                                                                                                                                                                           |                                                                                                                                                               |
+| What               | Set                                                                                                                                                                                     | Array                                                                                                                                                        |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|                    | Abstract data type with only disinct elements, without the need of being allocated by index<br><br>- keyed collection                                                                   | A Structure representing block of data allocated in consecutive memory<br><br>- indexed collection                                                           |
+| Acessing elements  |                                                                                                                                                                                         | Faster, because stored in consecutive memory                                                                                                                 |
+| Check if el exists | ***Set.prototype.has(value)***<br>set.has(0) → O(1)                                                                                                                                     | ***Array.prototype.indexOf(value)***<br>arr.indexOf(1) !== -1; → O(n)                                                                                        |
+| Add/insert         | set.add() → O(1) because hashtable approach                                                                                                                                             | **O(1)** → end with ``arr.push(el)`<br>**O(n)** → beggining with `arr.unshift(3)`                                                                            |
+| Remove             | set.delete(4)<br>set.clear()                                                                                                                                                            | arr.pop() → O(1)<br>arr.shift() → //removes first el → O(n)                                                                                                  |
+| Support            | less built in operations, but delete                                                                                                                                                    | no delete, but reduce, reverse, sort…                                                                                                                        |
+| When to use        | - *avoid saving duplicate data to our structure*<br>- **union(), intersect(), difference()**, etc… are easily implemented effectively based on the native built-in operations provided. | - *keep elements ordered for quick access*<br>- *heavy modification* (removing and adding elements) or *any action required direct index access to elements* |
+| Iteration          |                                                                                                                                                                                         |                                                                                                                                                              |
 
 > **Indexed collections** are collections of data which are ordered by an index value
 > **Keyed collections** are collections which use keys; these contain elements which are iterable in the order of insertion.
@@ -447,7 +515,7 @@ This is what the standard class `Promise` is for. A *promise* is an asynchronous
 
 Include padding and border in the element's total width and height:
 #example1 {
-  box-sizing: border-box;
+box-sizing: border-box;
 }
 
 ## Cascading
@@ -457,35 +525,23 @@ CSS priority is determined by [specificity and inheritance](https://www.smashing
 
 - Specificity: ID > class, psuedo-class > element, psudo-element
 - Inheritence: specified value → computed value → used value → actual value
-
-# map, reduce, filer
-## map
-* takes 2 arguments, a callback and an optional context (will be considered as this in the callback) which I did not use in the previous example. The callback runs for each value in the array and returns each new value in the resulting array.
-`const officersIds = officers.map(officer => officer.id);`
-
 # Code style
 ## Safe mapping
-```js
-arr 
-&& arr.length
-&& arr.map((el) =>(
-    <Option> {el} </Option>
-))
-}
-```
-
-
-
+    arr 
+    && arr.length
+    && arr.map((el) =>(
+        <Option> {el} </Option>
+    ))
+    }
 # Vue
 | Props                                                       | Data                                                                             |
 | ----------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | data that the ancestor can pass down to the child component | Data is the memory of each component. This is where you would store *your* data; |
-|                                                             | data() →  computations only in init() <br>data: {} → object map                  |
+|                                                             | data() → computations only in init() <br>data: {} → object map                   |
 
 | Computed                                                                                          | Methods                       | Watch                                                                              |
 | ------------------------------------------------------------------------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------- |
 | calculate a value on the fly (behaves as it is a `data` value; it’s *computed* when it’s accessed | you want to execute something | keeps track of any data that changed (you can observe data, props, maybe computed) |
 | values are cached                                                                                 | values are not cached         |                                                                                    |
-
 
 
