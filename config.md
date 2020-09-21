@@ -38,6 +38,9 @@ Host exp
 	IdentityFile ~/.ssh/id_rsa_exp
 ```
 
+## (Add key to ssh-agent (e.g. restart))
+`ssh-add -K ~/.ssh/experteer_rsa`
+
 ## Clone you repo and modify your Git config clone your repo
 ``git clone git@exp.gitlab.com:exp/folder.git``
 
