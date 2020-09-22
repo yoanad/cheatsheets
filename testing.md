@@ -49,5 +49,72 @@ describe('MyComponent', () => {
     });
   });
   ```
+## API call
+```js
+describe('my service', () => {
+  describe('list()', () => {
+    describe('and the API call succeeds', () => {
+      let myService;
 
+      beforeEach(async () => {
+        fetchMock.get(
+          config.api.myService.url,
+          {
+            status: statusCodes.ok,
+            body: [
+              {
+                id: 1,
+                label: 'Hello',
+            ]
+          }
+        );
+
+        result = await myService.list();
+      });
+
+      afterEach(() => {
+        fetchMock.restore();
+      });
+
+      it('calls the API', () => {
+        expect(fetchMock.called())
+          .toBe(true);
+      });
+
+      it('resolves with JSON data', () => {
+        expect(result)
+          .toContainEqual({
+            id: 1,
+            label: 'Hello'
+          });
+      });
+    });
+
+    describe('and the API call fails', () => {
+      beforeAll(() => {
+        fetchMock.get(
+          config.api.myService.url,
+          {
+            status: statusCodes.internalServerError
+          }
+        );
+      });
+
+      afterAll(() => {
+        fetchMock.restore();
+      });
+
+      it('rejects with status', () => {
+        expect(myService.list())
+          .rejects
+          .toThrow('Failing to fetch expertises 500: Internal Server Error');
+      });
+
+      it('calls the API', () => {
+        expect(fetchMock.called()).toBe(true);
+      });
+    });
+  });
+});
+```
 
