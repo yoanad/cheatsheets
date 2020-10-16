@@ -21,6 +21,7 @@ class DisplayMessages extends React.Component {
 ```
 
 ## React + API call
+https://www.smashingmagazine.com/2020/06/rest-api-react-fetch-axios/ 
 1. User visits webpage
 2. The component is mounted to the DOM (webpage)
 3. The componentDidMount or useEffect method is called sending off the HTTP request
