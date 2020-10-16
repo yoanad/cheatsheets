@@ -20,6 +20,14 @@ class DisplayMessages extends React.Component {
 };
 ```
 
+## React + API call
+1. User visits webpage
+2. The component is mounted to the DOM (webpage)
+3. The componentDidMount or useEffect method is called sending off the HTTP request
+4. The webpage gives an indication it is loading data
+5. The data is received from the external API and added to state (side effect)
+6. The component renders with the data that was fetched.
+
 ## Hooks
 
 ### `useEffect`
