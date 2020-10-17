@@ -544,4 +544,8 @@ CSS priority is determined by [specificity and inheritance](https://www.smashing
 | calculate a value on the fly (behaves as it is a `data` value; it’s *computed* when it’s accessed | you want to execute something | keeps track of any data that changed (you can observe data, props, maybe computed) |
 | values are cached                                                                                 | values are not cached         |                                                                                    |
 
+# Fetch vs Axios
+* Axios: A client HTTP API based on the XMLHttpRequest interface provided by browsers,
+
+
 
