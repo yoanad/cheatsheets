@@ -547,5 +547,5 @@ CSS priority is determined by [specificity and inheritance](https://www.smashing
 # Fetch vs Axios
 * Axios: A client HTTP API based on the XMLHttpRequest interface provided by browsers,
 
-
+![comparison](./qr24s.png)
 
