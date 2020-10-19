@@ -74,7 +74,7 @@ credit: https://stackoverflow.com/questions/53464595/how-to-use-componentwillmou
 
 
 ### `useCallback`
-* the hook returns the same function instance between renderings
+* giving the same dependency values deps, the hook returns the same function instance between renderings:
 ```js
 function MyComponent() {
   // handleClick is the same function object
