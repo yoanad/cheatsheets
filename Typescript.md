@@ -12,3 +12,14 @@
 `const y = "hello world";`
 * the type is literally "hello world"
 * y can never be reassigned since it's a const, so we can regard it as only ever holding a value that's literally the string 'hello world' and no other possible value
+
+* Variable declarations
+```js
+let zz: number;
+zz = 41;
+zz = "abc"; // 🚨 ERROR Type '"abc"' is not assignable to type 'number'.
+```
+
+
+## Interfaces 
+- name for a structure that we are creating
