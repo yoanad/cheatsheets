@@ -1,4 +1,5 @@
 # Typescript 3 Fundamentals, v2
+https://frontendmasters.com/courses/typescript-v2/
 
 ## Introduction
 -  `.d.ts`: a type declaration file that layers right on top of the JS file it represents 
@@ -94,3 +95,24 @@ let contactInfo: HasEmail | HasPhoneNumber =
 
 contactInfo.name; // NOTE: we can only access the .name property  (the stuff HasPhoneNumber and HasEmail have in common)
 ```
+
+### Intersection
+
+let otherContactInfo: HasEmail & HasPhoneNumber = {
+  // we _must_ initialize it to a shape that's asssignable to HasEmail _and_ HasPhoneNumber
+  name: "Mike",
+  email: "mike@example.com",
+  phone: 3215551212
+};
+
+
+## Type Systens & Type Equivalents
+* Nominal type systems: the type depends on whether X is an instance of a class/type named Y (e.g. Java; JS is not necessarily written in classes)
+* Structural type systems: only care about the shape of an object
+
+*Shape*: the names of the properties and the types of their values 
+
+### Widener vs Narrower
+* Describes the relative differences in range of a type's allowable values 
+
+![image](https://user-images.githubusercontent.com/11481046/110376878-05550c00-8054-11eb-91ff-97449091e97d.png)
