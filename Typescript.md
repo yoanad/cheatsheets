@@ -113,6 +113,36 @@ let otherContactInfo: HasEmail & HasPhoneNumber = {
 *Shape*: the names of the properties and the types of their values 
 
 ### Widener vs Narrower
-* Describes the relative differences in range of a type's allowable values 
+* Describes the relative differences in range of a type's allowable values
+* Never: it is nothing
 
 ![image](https://user-images.githubusercontent.com/11481046/110376878-05550c00-8054-11eb-91ff-97449091e97d.png)
+
+## Function basics
+* `to`: argument 
+* `: { recipient: string; body: string }`: return type
+* return types can be inferred, but things can easily slip up
+
+```js
+function sendEmail(to: HasEmail): { recipient: string; body: string } {
+  return {
+    recipient: `${to.name} <${to.email}>`, // Mike <mike@example.com>
+    body: "You're pre-qualified for a loan!"
+  };
+}
+```
+
+Arrow function
+
+```js 
+const sendTextMessage = (
+  to: HasPhoneNumber
+): { recipient: string; body: string } => {
+  return {
+    recipient: `${to.name} <${to.phone}>`,
+    body: "You're pre-qualified for a loan!"
+  };
+};
+```
+
+
