@@ -56,3 +56,41 @@ dd = {
 
 ## Interfaces 
 - name for a structure that we are creating
+
+```js
+interface Address {
+  houseNumber: number;
+  streetName?: string;
+}
+// // and refer to it by name
+let ee: Address = { houseNumber: 33 };
+```
+
+### Union
+
+```js
+export interface HasPhoneNumber {
+  name: string;
+  phone: number;
+}
+
+export interface HasEmail {
+  name: string;
+  email: string;
+}
+
+let contactInfo: HasEmail | HasPhoneNumber =
+  Math.random() > 0.5
+    ? {
+        // we can assign it to a HasPhoneNumber
+        name: "Mike",
+        phone: 3215551212
+      }
+    : {
+        // or a HasEmail
+        name: "Mike",
+        email: "mike@example.com"
+      };
+
+contactInfo.name; // NOTE: we can only access the .name property  (the stuff HasPhoneNumber and HasEmail have in common)
+```
