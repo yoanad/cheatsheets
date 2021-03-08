@@ -19,7 +19,40 @@ let zz: number;
 zz = 41;
 zz = "abc"; // 🚨 ERROR Type '"abc"' is not assignable to type 'number'.
 ```
+### arrays
+```js
+let aa: number[] = [];
+aa.push(33);
+```
 
+### arrays (tuples)
+```js
+let bb: [number, string, string, number] = [
+  123,
+  "Fake Street",
+  "Nowhere, USA",
+  10110
+];
+```
+
+### Objects
+
+```js
+let cc: { houseNumber: number; streetName: string };
+cc = {
+  streetName: "Fake Street",
+  houseNumber: 123
+};
+```
+
+*optional operator
+```js 
+let dd: { houseNumber: number; streetName?: string };
+dd = {
+  houseNumber: 33,
+  streetName: ''
+};
+```
 
 ## Interfaces 
 - name for a structure that we are creating
