@@ -345,8 +345,146 @@ export class Contact implements HasEmail {
 
 ```js
 class ParamPropContact implements HasEmail {
-  constructor(public name: string, public email: string = "no email") {
+  constructor(
+  public name: string,
+  public email: string = "no email") {
     // nothing needed
   }
 }
 ```
+
+* class fleids can have initializers 
+* public, private, protected and readonly(!)
+
+```js
+class OtherContact implements HasEmail, HasPhoneNumber {
+  protected age: number = 0;
+  // private password: string;
+  constructor(public name: string, public email: string, public phone: number) {
+    this.age = 35;
+    // () password must either be initialized like this, or have a default value
+    // this.password = Math.round(Math.random() * 1e14).toString(32);
+  }
+}
+```
+
+### definite assignment and lazy initialization 
+* Definite assignment operator `!`: trust my TS, I will make sure that this field gets initialized properly
+```js
+class OtherContact implements HasEmail, HasPhoneNumber {
+  protected age: number = 0;
+  private password!: string;
+  constructor(public name: string, public email: string, public phone: number) {
+    // () password must either be initialized like this, or have a default value
+  }
+  
+  async init() {
+    this.password = Math.round(Math.random() * 1e14).toString(32);
+  }
+}
+```
+
+* What if we don't know if the field is going to be there at initialization time? 
+```js
+class OtherContact implements HasEmail, HasPhoneNumber {
+  protected age: number = 0;
+  private password: string | undefined;
+  constructor(public name: string, public email: string, public phone: number) {
+    // () password must either be initialized like this, or have a default value
+  }
+  private get password():string { // if the password value doesn't exists, we are gonna create it lazily
+    if (!this.passwordVal;) {
+      this.passwordVal = Math.round(Math.random() * 1e14).toString(32);
+    }
+    
+    return passwordVal;
+  }
+}
+```
+
+### Abstract classes 
+* cannot be instantiated
+* can have implementations
+* the abstract method must be implemented by any abstract class
+
+```js
+abstract class AbstractContact implements HasEmail, HasPhoneNumber {
+  public abstract phone: number; // must be implemented by non-abstract subclasses
+
+  constructor(
+    public name: string,
+    public email: string // must be public to satisfy HasEmail
+  ) {}
+
+  abstract sendEmail(): void; // must be implemented by non-abstract subclasses
+}
+```
+
+
+```js
+class ConcreteContact extends AbstractContact {
+  constructor(
+    public phone: number, // must happen before non property-parameter arguments
+    name: string,
+    email: string
+  ) {
+    super(name, email);
+  }
+  sendEmail() {
+    // mandatory!
+    console.log("sending an email");
+  }
+}
+```
+
+## Converting TS to JS
+*Don't do:*
+* functional changes
+* changes when u have low test coverage
+* forget to add tests to your types
+* type too strong too early
+* publish types for the consumer while they are in a "weak" state
+
+
+### Step 1: Compiling things in loose mode
+
+1. Start with tests passing
+2. Rename all `.js` to `.ts`, allowing implicit any (whenever the TS compiler cannot infer a more specific and useful type, e.g. a function argument)
+```js
+function foo(a) {
+  a.split(', ');
+}
+```
+=> it's not clear what type `a` has
+3. Fix only things that are not type-checking, or causing compile errors (e.g. JS classes - you will have to go and state the fields)
+4. Be careful about changing behavior!
+5. Get tests passing!
+
+### Step 2: Making `Anys` Explicit
+1. Start with tests passing 
+2. Ban implicit `Any` by setting a TS compiler option
+```js
+noImplicitAny: true
+```
+=> instead of TS falling back to Any in cases where it can't figure things out by inference, it will throw an compiler error
+
+3. Where possible, provide a specific and appropriate type
+  * Import types for dependancies from `DefinitelyTyped` - open source project
+  * otherwise explicit any
+
+4. Get test passing again
+
+
+### Step 3: Squash explicit `Anys`, enable strict mode
+Incrementally, in small chunks...
+1. Enable strict mode => 
+
+```js
+"strictNullChecks": true, // null is not regarded as a valid value in a type
+"strict": true, 
+"strictFunctionTypes": true, // validates arguments and return types of callback types
+"strictBindCallApply: true // the arguments passed to bind, call, apply and the lexical scope type check appropriately
+```
+
+2. Replace explicit anys w/ more appropriate types
+3. Try really hard to avoid unsafe casts (e.g. `as`)
