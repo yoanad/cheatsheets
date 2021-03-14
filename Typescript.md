@@ -167,6 +167,40 @@ function contactPeople(
 }
 ```
 
+### Lexical scope - handling this in functions
+```js
+function sendMessage(
+  this: HasEmail & HasPhoneNumber,
+  preferredMethod: "phone" | "email"
+) {
+  if (preferredMethod === "email") {
+    console.log("sendEmail");
+    sendEmail(this);
+  } else {
+    console.log("sendTextMessage");
+    sendTextMessage(this);
+  }
+}
+const c = { name: "Mike", phone: 3215551212, email: "mike@example.com" };
+```
+
+```js
+function invokeSoon(cb: () => any, timeout: number) {
+  setTimeout(() => cb.call(null), timeout);
+}
+```
+
+```js
+// ✅ creating a bound function is one solution
+const bound = sendMessage.bind(c, "email");
+invokeSoon(() => bound(), 500);
+```
+
+```js
+// ✅ call/apply works as well
+invokeSoon(() => sendMessage.apply(c, ["phone"]), 500);
+```
+
 
 ## Interfaces & type aliases
 ### Type aliases
@@ -201,3 +235,8 @@ export interface HasInternationalPhoneNumber extends HasPhoneNumber {
 interface ContactMessenger1 {
   (contact: HasEmail | HasPhoneNumber, message: string): void;
 }
+
+type ContactMessenger2 = (
+  contact: HasEmail | HasPhoneNumber,
+  message: string
+) => void;
