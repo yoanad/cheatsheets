@@ -166,3 +166,24 @@ function contactPeople(
   }
 }
 ```
+
+
+## Interfaces & type aliases
+### Type aliases
+
+/**
+ * (1) Type aliases allow us to give a type a name
+ */
+ ```js
+type StringOrNumber = string | number;
+```
+
+```js
+// // this is the ONLY time you'll see a type on the RHS of assignment
+type HasName = { name: string };
+```
+
+```js
+// NEW in TS 3.7: Self-referencing types!
+type NumVal = 1 | 2 | 3 | NumVal[];
+```
