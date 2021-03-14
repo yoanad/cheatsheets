@@ -219,7 +219,7 @@ type HasName = { name: string };
 type NumVal = 1 | 2 | 3 | NumVal[];
 ```
 
-### Interfaces
+### Interfaces; Call and construct signatures
 * Interfaces can extend from other interfaces
 * *exteds* is used for inheriting like-things (e.g. a class extends a class)
 
@@ -232,11 +232,52 @@ export interface HasInternationalPhoneNumber extends HasPhoneNumber {
 * Type aliases can handle primitive types as well, interfaces can extend ONLY the JS Object and some types (arrays and functions)
 * Interfaces can describe objects, arrays
 * Interfaces can describe call signature
+
+```js
 interface ContactMessenger1 {
   (contact: HasEmail | HasPhoneNumber, message: string): void;
 }
+```
 
+```js
 type ContactMessenger2 = (
   contact: HasEmail | HasPhoneNumber,
   message: string
 ) => void;
+```
+
+* contextual inference of functions => we don't need type annotations for contact or message
+
+```js
+const emailer: ContactMessenger1 = (_contact, _message) => {
+  /** ... */
+};
+```
+
+* construct signatures 
+```js
+interface ContactConstructor {
+  new (...args: any[]): HasEmail | HasPhoneNumber;
+}
+```
+
+### Interfaces; dictionary objects and index signatures
+* index signatures => describe how a type will respond to property access
+
+* if u access a property of a `PhoneNumberDict` and give it a `string`, it will either not be there (`undefined`) or it will have the form of `{
+        areaCode: number;
+        num: number;
+      };`
+      
+ 
+```js
+interface PhoneNumberDict {
+  // arr[0],  foo['myProp']
+  [numberName: string]:
+    | undefined
+    | {
+        areaCode: number;
+        num: number;
+      };
+}
+```
