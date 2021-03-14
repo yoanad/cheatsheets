@@ -324,3 +324,29 @@ interface PhoneNumberDict {
 -> dts lint
 
 ## Classes
+* Fields
+* access modifier keywords (private, public, protecteD)
+* `implements`: a class aligning with a particular interface
+
+```js
+// For every class that implements that interface, we need to make sure that these properties, that conform to that interface (email, name) are available and stated upfront.
+export class Contact implements HasEmail {
+  email: string;
+  name: string; // member fields
+  constructor(name: string, email: string) { // we accept two parameters
+    this.email = email;
+    this.name = name;  // we pass the things that the constructor recieves on to the instance (this)
+  }
+}
+```
+
+### Access modifiers and initialization
+* Parameter properties: a shortcut to specify parameters 
+
+```js
+class ParamPropContact implements HasEmail {
+  constructor(public name: string, public email: string = "no email") {
+    // nothing needed
+  }
+}
+```
