@@ -170,10 +170,7 @@ function contactPeople(
 
 ## Interfaces & type aliases
 ### Type aliases
-
-/**
- * (1) Type aliases allow us to give a type a name
- */
+* Type aliases allow us to give a type a name
  ```js
 type StringOrNumber = string | number;
 ```
@@ -187,3 +184,20 @@ type HasName = { name: string };
 // NEW in TS 3.7: Self-referencing types!
 type NumVal = 1 | 2 | 3 | NumVal[];
 ```
+
+### Interfaces
+* Interfaces can extend from other interfaces
+* *exteds* is used for inheriting like-things (e.g. a class extends a class)
+
+```js
+export interface HasInternationalPhoneNumber extends HasPhoneNumber {
+  countryCode: string;
+}
+```
+
+* Type aliases can handle primitive types as well, interfaces can extend ONLY the JS Object and some types (arrays and functions)
+* Interfaces can describe objects, arrays
+* Interfaces can describe call signature
+interface ContactMessenger1 {
+  (contact: HasEmail | HasPhoneNumber, message: string): void;
+}
