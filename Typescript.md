@@ -281,3 +281,46 @@ interface PhoneNumberDict {
       };
 }
 ```
+* enforcing a type check; NARROWING a type
+
+const d: PhoneNumberDict = {};
+if (d.abc) { // we are checking if the property exists at all
+  d.abc = ...;
+}
+
+const d: PhoneNumberDict = {};
+if (d.abc === 'object') {
+  d.abc = ...;
+}
+
+* a type may have one string and one number index signature 
+
+
+### Combining interfaces 
+
+interface PhoneNumberDict {
+  home: {
+    /**
+     * (7) interfaces are "open", meaning any declarations of the
+     * -   same name are merged
+     */
+    areaCode: number;
+    num: number;
+  };
+  office: {
+    areaCode: number;
+    num: number;
+  };
+}
+
+// phoneDict.home;   // definitely present
+// phoneDict.office; // definitely present
+// phoneDict.mobile; // MAYBE present
+
+* interfaces are hoisted (they are like functions), types are not
+
+
+### Type tests
+-> dts lint
+
+## Classes
