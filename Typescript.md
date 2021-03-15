@@ -488,3 +488,7 @@ Incrementally, in small chunks...
 
 2. Replace explicit anys w/ more appropriate types
 3. Try really hard to avoid unsafe casts (e.g. `as`)
+
+
+## Generics
+* generics are parameterized types
