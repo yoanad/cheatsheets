@@ -491,4 +491,93 @@ Incrementally, in small chunks...
 
 
 ## Generics
-* generics are parameterized types
+* Generics are parameterized types
+* Generics allow us to parameterize types in the same way that functions parameterize values
+
+```js
+// param determines the value of x
+function wrappedValue(x: any) {
+  return {
+    value: x
+  };
+}
+```
+
+```js
+// // type param determines the type of x
+interface WrappedValue<X> {
+  value: X;
+}
+```
+```js
+let val: WrappedValue<string[]> = { value: [] };
+val.value;
+```
+
+### Type parameters
+
+* Filter an array
+
+```js
+interface FilterFunction<T = any> {
+  (val: T): boolean;
+}
+```
+```js
+const stringFilter: FilterFunction<string> = val => typeof val === "string";
+stringFilter(0); // 🚨 ERROR
+stringFilter("abc"); // ✅ OK
+```
+
+* fetch return a `Promise` that resolves to a `Response` and TS figures out that T in `resolveOrTimeout<T>` is a `Response
+
+```js
+function resolveOrTimeout<T>(promise: Promise<T>, timeout: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    // start the timeout, reject when it triggers
+    const task = setTimeout(() => reject("time up!"), timeout);
+
+    promise.then(val => {
+      // cancel the timeout
+      clearTimeout(task);
+
+      // resolve with the value
+      resolve(val);
+    });
+  });
+}
+resolveOrTimeout(fetch(""), 3000);
+```
+
+
+### Constraints and scope
+* `extends`: if we wanna access an object of type T (e.g. exampleObj.id), we must specify that the type T is at least an object with a property `id`, whose value is a `string`
+```js
+function arrayToDict<T extends { id: string }>(array: T[]): { [k: string]: T } {
+  const out: { [k: string]: T } = {};
+  array.forEach(val => {
+    out[val.id] = val;
+  });
+  return out;
+}
+```
+```js
+const myDict = arrayToDict([
+  { id: "a", value: "first", lisa: "Huang" },
+  { id: "b", value: "second" }
+]);
+```
+
+
+### Scope
+
+function startTuple<T>(a: T) {
+  return function finishTuple<U>(b: U) {
+    return [a, b] as [T, U];
+  };
+}
+const myTuple = startTuple(["first"])(42);
+  
+  
+### When to use generics?
+* when we want to describe a relationship between two or more types (i.e., a function argument and return type)
