@@ -1,3 +1,14 @@
+# Typescript useful stuff
+
+## Pick
+```js
+type RoleNamesNeeded = Pick<TagListProps, 'tags'>;
+const roleNamesNeeded: RoleNamesNeeded['tags'] = project.rolesNeeded.map((tag) => tag.name);
+
+type RoleNamesNeeded = TagListProps['tags'];
+const roleNamesNeeded: RoleNamesNeeded = project.rolesNeeded.map((tag) => tag.name);
+```
+
 # Typescript 3 Fundamentals, v2
 https://frontendmasters.com/courses/typescript-v2/
 
