@@ -514,6 +514,11 @@ which means that promise jobs inside the job queue/ micro-task queue will be exe
     myMap.set(keyObj, 'value associated with keyObj');
     myMap.set(keyFunc, 'value associated with keyFunc');
 
+#### Key differences
+- A Map is ordered and iterable, whereas a objects is not ordered and not iterable
+- We can put any type of data as a Map key, whereas objects can only have a number, string, or symbol as a key.
+- A Map inherits from Map.prototype. This offers all sorts of utility functions and properties which makes working with Map objects a lot easier.
+
 ![EbGK0jYWsAQ1SSk](https://user-images.githubusercontent.com/11481046/151662407-817aa7a2-d598-4645-8493-4e0547cfefef.jpeg)
 
 
