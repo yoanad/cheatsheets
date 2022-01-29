@@ -65,6 +65,23 @@
     };
     var o = Object.create(x);
 ```
+
+**** Operations on objects
+
+```js
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+const returnedTarget = Object.assign(target, source);
+
+
+//Object.entries()
+for (const [key, value] of Object.entries(object1)) {
+  console.log(`${key}: ${value}`);
+}
+```
+
+
 **Constructor**
 
     function Actor(firstName, lastName, Age) {
