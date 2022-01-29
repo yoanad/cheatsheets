@@ -513,6 +513,10 @@ which means that promise jobs inside the job queue/ micro-task queue will be exe
     myMap.set(keyString, "value associated with 'a string'");
     myMap.set(keyObj, 'value associated with keyObj');
     myMap.set(keyFunc, 'value associated with keyFunc');
+
+![EbGK0jYWsAQ1SSk](https://user-images.githubusercontent.com/11481046/151662407-817aa7a2-d598-4645-8493-4e0547cfefef.jpeg)
+
+
 # ES6 sets vs arrays
 | What               | Set                                                                                                                                                                                     | Array                                                                                                                                                        |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
