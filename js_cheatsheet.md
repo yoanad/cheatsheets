@@ -272,7 +272,8 @@ The *forEach* method iterates through an array and, for each element, it execute
         keyObj = {},
         keyFunc = function () {};
     
-    // setting the values
+    // 
+    ting the values
     myMap.set(keyString, "value associated with 'a string'");
     myMap.set(keyObj, "value associated with keyObj");
     myMap.set(keyFunc, "value associated with keyFunc");
@@ -313,6 +314,9 @@ The `**Set**` object lets you store unique values of any type, whether [primitiv
     [...names] // the set is now an array
     [...names].map(name => {firstname: name});
     new Set([...names].map(name => {firstname: name})); // -> convert back to set
+## Set vs Map
+Set objects are one-dimensional collections, whereas Map objects are two-dimensional.
+
 ## String manipulation
 
 **Split**
